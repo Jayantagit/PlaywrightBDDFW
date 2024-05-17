@@ -7,7 +7,7 @@
             "src/test/features/*.feature"        
         ],
         "require": [
-            "src/test/steps/*.ts"
+            "src/test/steps/*.ts","src/main/Hooks/Hooks.ts"
         ],
         "requireModule": ["ts-node/register"]
     }

@@ -1,15 +1,17 @@
 import { expect, type Page, type Locator } from "@playwright/test"
 export class LoginPage {
-    readonly page: Page
-    readonly userName: Locator
-    readonly password: Locator
-    readonly submit: Locator
+    private page: Page
+    private userName: Locator
+    private password: Locator
+    private submit: Locator
+
 
     constructor(page: Page) {
         this.page = page
         this.userName = page.getByPlaceholder("Username")
         this.password = page.getByPlaceholder("Password")
         this.submit = page.locator("//button[@type='submit']")
+       
 
     }
 
@@ -34,4 +36,5 @@ export class LoginPage {
         //await this.page.waitForTimeout(5000);
     }
 
+   
 }

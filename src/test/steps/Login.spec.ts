@@ -1,16 +1,16 @@
 import { Given, When, Then } from "@cucumber/cucumber";
 import { test, expect, chromium, Browser, BrowserContext, Page } from "@playwright/test";
 import { LoginPage } from "../pages/LoginPage";
+import {contextFixture} from "../../main/Hooks/Hooks";
+
 let loginPage: LoginPage;
 let browser: Browser;
 let browserContext: BrowserContext;
 let page: Page;
 
 Given('User Launch the Browser', async function () {
-  browser = await chromium.launch({ headless: false ,channel:"chrome"});
-  browserContext = await browser.newContext();
-  const page = await browserContext.newPage();
-  loginPage = new LoginPage(page);
+  this.page= contextFixture.getPage();
+  loginPage = new LoginPage(this.page);
 
 });
 
@@ -37,7 +37,7 @@ Then('User enter password {string}', async function (password) {
 
 Then('Click on Login button', async function () {
   await loginPage.clickOnLogin();
-  await page.close();
-  await browser.close();
+ // await page.close();
+//  await browser.close();
   
 });
